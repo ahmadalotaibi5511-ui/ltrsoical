@@ -3,426 +3,285 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LTR - Social Links</title>
+<title>LTR</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+
 <style>
-  :root {
-    --white: #ffffff;
-    --white-glow: #6d3b12;
-    --white-dim: #6d3b12;
-    --bg: #0a0a0a;
-    --card-bg: rgba(82, 82, 82, 0.75);
-    --border: #6d3b12;
-  }
+:root{
+  --main:#6d3b12;
+}
 
-  * { margin: 0; padding: 0; b
-    background: #0a0a0a;
-    color: #6d3b12;
-    font-family: 'Tajaox-sizing: border-box; }
+body{
+  margin:0;
+  font-family:'Tajawal',sans-serif;
+  background:#0a0a0a;
+  color:white;
+}
 
-  body {wal', sans-serif;
-    min-height: 100vh;
-    overflow-x: hidden;
-    position: relative;
-  }
+/* NAV */
+.navbar{
+  position:fixed;
+  top:0;
+  width:100%;
+  display:flex;
+  justify-content:center;
+  gap:30px;
+  background:#000;
+  padding:15px;
+  border-bottom:1px solid var(--main);
+  z-index:999;
+}
 
-  
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    background:
-      radial-gradient(ellipse 70% 50% at 50% 0%,   rgba(255, 255, 255, 0.28) 0%, transparent 55%),
-      radial-gradient(ellipse 55% 45% at 15% 50%,  rgba(255, 255, 255, 0.16) 0%, transparent 55%),
-      radial-gradient(ellipse 55% 45% at 85% 50%,  rgba(255, 255, 255, 0.16) 0%, transparent 55%),
-      radial-gradient(ellipse 60% 40% at 50% 100%, rgba(98, 69, 13, 0.14) 0%, transparent 55%),
-      linear-gradient(180deg, #000000 0%, #6d3b12 30%, #000000 70%, #6d3b12 100%);
-    pointer-events: none;
-  }
+.navbar a{
+  color:var(--main);
+  font-weight:bold;
+  cursor:pointer;
+  text-decoration:none;
+}
 
-  
-  body::after {
-    content: '';
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    background-image:
-      linear-gradient(rgba(164, 162, 164, 0.07) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(148, 147, 149, 0.07) 1px, transparent 1px);
-    background-size: 40px 40px;
-    animation: gridMove 8s linear infinite;
-    pointer-events: none;
-  }
+/* SECTIONS */
+.section{display:none;padding-top:80px;}
+.active{display:block;}
 
-  
-  .banner, .profile-wrap, .container, footer {
-    position: relative;
-    z-index: 1;
-  }
+/* HOME */
+.banner{height:260px;}
+.banner img{width:100%;height:100%;object-fit:cover;}
 
-  
-  .banner {
-    width: 100%;
-    height: 320px;
-    background: #0a0a0a;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0;
-    padding-bottom: 0;
-  }
+.profile{
+  display:flex;
+  justify-content:center;
+  margin-top:-40px;
+}
 
-  .banner-bg-img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    opacity: 0.85;
-  }
+.profile img{
+  width:90px;
+  height:90px;
+  border-radius:20px;
+  border:3px solid var(--main);
+}
 
-  
-  .banner-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(255, 255, 255, 0.35);
-  }
+.center-text{
+  text-align:center;
+  margin:15px;
+}
 
-  .banner::after {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, var(--white), transparent);
-    box-shadow: 0 0 16px var(--white);
-  }
+/* CARDS */
+.cards{
+  max-width:600px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+  padding:20px;
+}
 
-  @keyframes gridMove {
-    0%   { background-position: 0 0; }
-    100% { background-position: 50px 50px; }
-  }
+.card{
+  height:120px;
+  border-radius:12px;
+  overflow:hidden;
+  border:1px solid var(--main);
+}
 
- 
-  .profile-wrap {
-    position: relative;
-    z-index: 10;
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-  }
+.card img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
 
-  .profile-logo {
-    width: 80px;
-    height: 80px;
-    border-radius: 20px;
-    border: 2.5px solid var(--white);
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 50px rgba(255, 255, 255, 0.3);
-    background: #ffffff;
-    display: block;
-    object-fit: cover;
-    overflow: hidden;
-  }
+/* SOCIAL */
+.container{
+  max-width:600px;
+  margin:auto;
+  padding:20px;
+}
 
-  
-  .container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 0 20px 60px;
-  }
+.social-card{
+  display:flex;
+  justify-content:space-between;
+  background:#1a1a1a;
+  padding:15px;
+  margin-bottom:10px;
+  border-radius:12px;
+  color:white;
+  text-decoration:none;
+}
 
-  
-  .section-title {
-    text-align: center;
-    font-size: 22px;
-    font-weight: 700;
-    color: rgba(255,255,255,0.6);
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    margin: 36px 0 24px;
-    position: relative;
-  }
+/* CHAT */
+.chat{
+  max-width:600px;
+  margin:auto;
+  padding:20px;
+}
 
-  .section-title::before,
-  .section-title::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    width: 60px;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--white));
-  }
+.msg-box{
+  height:300px;
+  overflow:auto;
+  background:#111;
+  padding:10px;
+  border-radius:10px;
+  margin-bottom:10px;
+}
 
-  .section-title::before { right: calc(50% + 100px); background: linear-gradient(90deg, transparent, var(--white)); }
-  .section-title::after  { left:  calc(50% + 100px); background: linear-gradient(90deg, var(--white), transparent); }
+input,button{
+  width:100%;
+  padding:10px;
+  margin:5px 0;
+  border:none;
+  border-radius:8px;
+}
 
- 
-  .social-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-  }
-
-  .social-card {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 16px 20px;
-    text-decoration: none;
-    color: #fff;
-    position: relative;
-    overflow: hidden;
-    transition: border-color 0.25s, transform 0.2s, box-shadow 0.25s;
-    cursor: pointer;
-    min-height: 88px;
-  }
-
-  .social-card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, transparent 60%);
-    opacity: 0;
-    transition: opacity 0.25s;
-  }
-
-  .social-card:hover {
-    border-color: var(--white);
-    transform: translateY(-2px) scale(1.01);
-    box-shadow: 0 8px 32px rgba(255, 255, 255, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.15);
-  }
-
-  .social-card:hover::before { opacity: 1; }
-
-  .social-card:active { transform: scale(0.99); }
-
-  
-  .social-thumb {
-    width: 56px;
-    height: 80px;
-    border-radius: 10px;
-    object-fit: cover;
-    flex-shrink: 0;
-    border: 1px solid rgba(160,32,240,0.3);
-  }
-
-  
-  .platform-icon {
-    width: 28px;
-    height: 28px;
-    flex-shrink: 0;
-    object-fit: contain;
-  }
-
-  .card-info {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-
-  .card-platform {
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--white-glow);
-  }
-
-  .card-title {
-    font-size: 17px;
-    font-weight: 700;
-    color: #fff;
-  }
-
-  .card-sub {
-    font-size: 13px;
-    color: rgba(255,255,255,0.4);
-  }
-
-  .card-arrow {
-    font-size: 20px;
-    color: var(--white);
-    flex-shrink: 0;
-    transition: transform 0.2s;
-  }
-
-  .social-card:hover .card-arrow { transform: translateX(-4px); }
-
-  
-  .add-more-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    width: 100%;
-    padding: 18px;
-    margin-top: 10px;
-    background: transparent;
-    border: 2px dashed rgba(255, 255, 255, 0.35);
-    border-radius: 16px;
-    color: rgba(255,255,255,0.35);
-    font-size: 15px;
-    font-family: 'Tajawal', sans-serif;
-    cursor: pointer;
-    transition: all 0.25s;
-  }
-
-  .add-more-btn:hover {
-    border-color: var(--white);
-    color: var(--brown);
-    background: rgba(228, 228, 228, 0.05);
-  }
-
-  
-  footer {
-    text-align: center;
-    color: rgba(255, 255, 255, 0.15);
-    font-size: 12px;
-    padding: 20px;
-    letter-spacing: 2px;
-    border-top: 1px solid #ffffff;
-    margin-top: 20px;
-  }
-
-  
-  @media (max-width: 480px) {
-    .banner { height: 260px; }
-    .section-title::before, .section-title::after { width: 30px; }
-  }
-
-  @keyframes fadeInBtn {
-    from { opacity: 0; transform: translateY(8px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
+button{
+  background:var(--main);
+  color:white;
+  cursor:pointer;
+}
 </style>
 </head>
+
 <body>
 
-
-<div class="banner">
-  <img class="banner-bg-img" src="https://media.discordapp.net/attachments/1500200151128735947/1501184078421037126/Majlis.png?ex=69fb261e&is=69f9d49e&hm=8aec6d4871ac1e8c4222c2ab16f13807a9b282544c30f896c3e6468c7c14c5ec&=&format=webp&quality=lossless&width=1103&height=609" alt="">
-  <div class="banner-overlay"></div>
+<!-- NAV -->
+<div class="navbar">
+  <a onclick="show('home')">الرئيسية</a>
+  <a onclick="show('social')">حساباتي</a>
+  <a onclick="show('chat')">الشات</a>
 </div>
 
-<div class="profile-wrap">
-  <img class="profile-logo" src="https://media.discordapp.net/attachments/1500200151128735947/1501184025203838986/E4E7F7AD-0B1E-4050-B194-24831F04650B.png?ex=69fb2612&is=69f9d492&hm=7bde671798173b214473f3c1a2866a26d2ac4b902d33523f0355fc2d6b327064&=&format=webp&quality=lossless&width=786&height=786" alt="">
-</div>
+<!-- HOME -->
+<div id="home" class="section active">
 
-
-<div class="container">
-
-  
-  <div class="section-title">التواصل الاجتماعي</div>
-
-  
-  <div class="social-grid" id="socialGrid">
-
-
-    <a class="social-card" href="https://kick.com/LTR11" target="_blank">
-  <div style="width:56px;height:80px;border-radius:10px;background:#000;display:flex;align-items:center;justify-content:center;border:1px solid rgba(160,32,240,0.3);flex-shrink:0;overflow:hidden;">
-    <img src="data:image/webp;base64,UklGRnYDAABXRUJQVlA4IGoDAACQKACdASoGAQ4BPp1KoUslpCOhqBw4qLATiWVu4Wzy4l1rT/gGx1cY/Lipi/4+07/cv4B/GfjJ/9tAB/AP8L6xVj/+t3p1+DAEod3d3d3d3d3dC2jIIUnWBPpB2u7WRx2sFkPG1G2Lvto4q3kT6jFf5zkc6xErWSfJRXB/grIDNiobAf+3r9eDrra+MLFwhFYHZe41iGoKSsDXTk6r6UBLOq8w7XrMWLzu7m4kQJtUxYXKyPBdaSJNJyWws+Qn2+hdesxYvO6ZfQUnRMb6hltvWDkLXDgJzhxaCNrfQuvWYsXnd3NUXMzQdScnqYEer8J0DX4+sPciN8cUZP7w9jmkLQifSALa2xONdOTBg4F6Ohxz0nbR6/FngUwI5PUwHWEDn31A3ouEUDqFkcsYqFfIF04xKruAIz4bqwFgk7a2RVraaXukfnf29hfUAAAA/v4NYAIdBRmdkoHM5ZBYbO5v0lhWg2imbIOmA0po7q3mZOU7D9+6DdwP+T9N9r3nHhSPlX4bK01nAThEY9J4LQnH+gsEjaJ0k45DXj/otOGRp60awpm0uA0j4qo164cFIibrxhEMey09WpaKZJo30T2aCgF657nyHHdQcJZDZOz5UB2i8YLZIvGXSr9IcvgeQZgqPveIYZn9N8s3luO4K4oYGRa4x+f+cJ8PaGNU0E1eC01m/rYXDJRg0QJAvf9XsAcmNtbJoD9ze9krpRVulZIK77c302G0iSPGhXfxL8/8mkXF3zY3Oa0qijmKh+zHdZUQ0vOcAhMOARRFRLX806svAw/ci9Yt7x8nDMR3Qwln/Ac20H7QBYnCFE6VkhEup8Uslvi+ce+ndIuyEq2Gpxfcve+58fGAaaDn8SBSgs6V5+iczJReXP0bpWSFf0BdiWajp9gG5tGHcDWgMBgNKV/8SVACtAEVFzrKmNWUlc8Q/WZIBmLRQiEJIf1n6ULtHVzYgXr++X+CbmoX8bi7uyS1lCQGQHiLYRtTCFEPEEzrtKNO0BPXZ5rb081kYefl3NoNkjDzwvXXrupRLp7R5upUx07bLQdYSLv/oya0SeWqrgosiwkQFa6RaI+6MfnesOhYw0q2wAIDRMoMfjVX3TM9/2701X5/Tc72X4sX75vQ5bTQmFugTtTX8h+30pIextHA/Pd/wAAAAAAA" style="width:100%;height:100%;object-fit:cover;border-radius:10px;" />
+  <div class="banner">
+    <img src="https://media.discordapp.net/attachments/1500200151128735947/1501184078421037126/Majlis.png?ex=69fbcede&is=69fa7d5e&hm=8e6e8726fa3b8e918ebd575e0a219d9aafa5d0b37c42cce3c5ba4b20ee8ad0d7&=&format=webp&quality=lossless&width=1103&height=609">
   </div>
-  <div class="card-info">
-    <span class="card-platform">KICK</span>
-    <span class="card-title">LTR</span>
-    <span class="card-sub">شاهد البثوث المباشرة في منصة KICK</span>
-  </div>
-  <span class="card-arrow">←</span>
-</a>
-
-  <a class="social-card" href="https://x.com/LTR11=21" target="_blank">
-  <div style="width:56px;height:80px;border-radius:10px;background:#000;display:flex;align-items:center;justify-content:center;border:1px solid rgba(160,32,240,0.3);flex-shrink:0;overflow:hidden;">
-    <img src="https://tse2.mm.bing.net/th/id/OIP.Me-Ju1BUPNaNqofK6TgV0QHaEK?pid=Api&h=220&P=0" style="width:100%;height:100%;object-fit:cover;border-radius:10px;" />
-  </div>
-  <div class="card-info">
-    <span class="card-platform">X</span>
-    <span class="card-title">LTR</span>
-    <span class="card-sub">شاهد مقاطع مميزة في منصة X</span>
-  </div>
-  <span class="card-arrow">←</span>
-</a>
-
-<a class="social-card" href="https://discord.gg/YyHJbfCudM" target="_blank">
-  <div style="width:56px;height:80px;border-radius:10px;background:#000;display:flex;align-items:center;justify-content:center;border:1px solid rgba(160,32,240,0.3);flex-shrink:0;overflow:hidden;">
-    <img src="https://th.bing.com/th/id/OIP.ylauKCsISFhTS2qY3HWCbQHaEK?w=283&h=180&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3" style="width:100%;height:100%;object-fit:cover;border-radius:10px;" />
-  </div>
-  <div class="card-info">
-    <span class="card-platform">Discord</span>
-    <span class="card-title">LTR Community</span>
-    <span class="card-sub">مجتمع الديسكورد</span>
-  </div>
-  <span class="card-arrow">←</span>
-</a>
-
-
   </div>
 
-  
-  <button class="add-more-btn" id="addBtn" style="display:none;" onclick="addCard()">
-    <span style="font-size:20px;">＋</span>
-    أضف حساب جديد
-  </button>
+  <div class="profile">
+    <img src="https://media.discordapp.net/attachments/1500200151128735947/1501184025203838986/E4E7F7AD-0B1E-4050-B194-24831F04650B.png?ex=69fbced2&is=69fa7d52&hm=b32e721ef0403cc15eb899d97a2fde99ac8a64587dbc09b3e0a5e0b84f696a0d&=&format=webp&quality=lossless&width=786&height=786">
+  </div>
+
+  <div class="center-text">
+    لاعب في سيرفر ريسبكت 8l8 gang مفلح شليويح
+  </div>
+
+  <div class="cards">
+   <div class="card"><img src="https://media.discordapp.net/attachments/1500200151128735947/1501533212965339237/Screenshot_2026-04-11_040603.png?ex=69fc6b47&is=69fb19c7&hm=d408aafc87a8f3e1ed07d9ed8acd59636c636a45168f06e3354ff62a1de7546f&=&format=webp&quality=lossless&width=1460&height=630"></div>
+    <div class="card"><img src="https://media.discordapp.net/attachments/1500200151128735947/1501533214471360552/Screenshot_2026-04-11_033617.png?ex=69fc6b47&is=69fb19c7&hm=5c933d4a5a8832a29071436b26efdc38ac8562140d54ad69b158c96f524dfe7c&=&format=webp&quality=lossless&width=1469&height=630"></div>
+    <div class="card"><img src="https://media.discordapp.net/attachments/1500200151128735947/1501533213930291240/Screenshot_2026-04-11_034631.png?ex=69fc6b47&is=69fb19c7&hm=92ffd2c4d322db931ddea9334cb857be7dc750c022ebf059bb95750603327862&=&format=webp&quality=lossless&width=1505&height=630"></div>
+  </div>
 
 </div>
 
-<footer>LTR © 2025</footer>
+<!-- SOCIAL -->
+<div id="social" class="section">
+  <div class="container">
+    <h2>حساباتي</h2>
 
+    <a class="social-card" href="https://kick.com">Kick</a>
+    <a class="social-card" href="https://x.com">X</a>
+    <a class="social-card" href="https://discord.gg">Discord</a>
+
+  </div>
+</div>
+
+<!-- CHAT -->
+<div id="chat" class="section">
+<div class="chat">
+
+  <div class="msg-box" id="box"></div>
+
+  <input id="msg" placeholder="اكتب رسالة">
+  <button onclick="send()">إرسال</button>
+  <button onclick="admin()">لوحة الإدارة</button>
+
+</div>
+</div>
 
 <script>
-  const SECRET = 'alrm';
-  let keyBuffer = '';
-  document.addEventListener('keydown', function(e) {
-    keyBuffer += e.key.toLowerCase();
-    if (keyBuffer.length > SECRET.length) keyBuffer = keyBuffer.slice(-SECRET.length);
-    if (keyBuffer === SECRET) {
-      const btn = document.getElementById('addBtn');
-      btn.style.display = 'flex';
-      btn.style.animation = 'fadeInBtn 0.4s ease';
-      keyBuffer = '';
-    }
+
+/* 🔒 نظام يوزر ثابت */
+let username = localStorage.getItem("username");
+let locked = localStorage.getItem("usernameLocked");
+
+window.onload = function(){
+
+  if(!username){
+    username = prompt("اختر اسمك (مرة واحدة فقط)");
+    if(!username) username = "مجهول";
+
+    localStorage.setItem("username", username);
+    localStorage.setItem("usernameLocked", "true");
+  }
+
+  if(locked === "true"){
+    username = localStorage.getItem("username");
+  }
+};
+
+/* NAV */
+function show(id){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+/* كلمات محظورة */
+const badWords = ["زق","تبن","خرا","كس","زب","كلب","حيوان","حمار"];
+let banList = [];
+let timeoutList = {};
+
+/* فلترة */
+function clean(text){
+  badWords.forEach(w=>{
+    text = text.replaceAll(w,"***");
   });
+  return text;
+}
 
-  function addCard() {
-    document.getElementById('modal').style.display = 'flex';
-  }
-  function closeModal() {
-    document.getElementById('modal').style.display = 'none';
-    ['inp-platform','inp-handle','inp-url','inp-sub'].forEach(id => document.getElementById(id).value = '');
-  }
-  function saveCard() {
-    const platform = document.getElementById('inp-platform').value.trim();
-    const handle   = document.getElementById('inp-handle').value.trim();
-    const url      = document.getElementById('inp-url').value.trim();
-    const sub      = document.getElementById('inp-sub').value.trim() || 'تابعنا';
-    if (!platform || !url) return;
+/* CHAT */
+function send(){
 
-    const card = document.createElement('a');
-    card.className = 'social-card';
-    card.href = url;
-    card.target = '_blank';
-    card.innerHTML = `
-      <div style="width:56px;height:80px;border-radius:10px;background:#1a1a1a;display:flex;align-items:center;justify-content:center;border:1px solid rgba(160,32,240,0.3);flex-shrink:0;font-size:22px;font-weight:900;color:var(--wh);font-family:'Tajawal',sans-serif;">${platform.charAt(0).toUpperCase()}</div>
-      <div class="card-info">
-        <span class="card-platform">${platform}</span>
-        <span class="card-title">${handle || platform}</span>
-        <span class="card-sub">${sub}</span>
-      </div>
-      <span class="card-arrow">←</span>
-    `;
-    document.getElementById('socialGrid').appendChild(card);
-    closeModal();
+  let name = username;
+  let msg = document.getElementById('msg').value;
+
+  if(banList.includes(name)) return alert("انت موقوف");
+
+  if(timeoutList[name] && timeoutList[name] > Date.now()){
+    return alert("تايم اوت");
   }
 
-  document.getElementById('modal').addEventListener('click', function(e) {
-    if (e.target === this) closeModal();
-  });
+  msg = clean(msg);
+
+  let div = document.createElement('div');
+  div.innerText = name + ": " + msg;
+
+  document.getElementById('box').appendChild(div);
+
+  document.getElementById('msg').value="";
+}
+
+/* ADMIN */
+function admin(){
+
+  let pass = prompt("كلمة المرور");
+
+  if(pass !== "vel123") return alert("خطأ");
+
+  let type = prompt("1-ban / 2-timeout");
+  let user = prompt("اسم اللاعب");
+
+  if(type=="1"){
+    banList.push(user);
+    alert("تم البان");
+  }
+
+  if(type=="2"){
+    let min = prompt("كم دقيقة");
+    timeoutList[user] = Date.now() + min*60000;
+    alert("تم التايم اوت");
+  }
+}
+
 </script>
+
 </body>
-</html> 
+</html>
